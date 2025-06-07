@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Family Blueberry - Вирощуємо та продаємо лохину з 2015 року</title>
+    <style>
+        :root {
+            --primary: #6a4c93;
+            --secondary: #8a5a44;
+            --accent: #f7c35f;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --berry: #6c63ff;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #faf5ff;
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        header {
+            background: 
+                linear-gradient(to bottom, rgba(106, 76, 147, 0.8), rgba(108, 99, 255, 0.9)),
+                url('https://images.unsplash.com/photo-1425934398893-310a009a77f9?ixlib=rb-1.2.1&auto=format&fit=crop&w=1800&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 2;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            font-weight: 800;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+        }
+        
+        .tagline {
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+            font-weight: 300;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .berry-decoration {
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M50 10c-20 0-30 15-30 30s10 30 30 30 30-15 30-30-10-30-30-30zm0 45c-8 0-15-7-15-15s7-15 15-15 15 7 15 15-7 15-15 15z" fill="white" opacity="0.2"/></svg>') no-repeat;
+            z-index: 1;
+        }
+        
+        .berry1 { top: 20px; left: 5%; transform: rotate(15deg); }
+        .berry2 { bottom: 10px; right: 10%; transform: rotate(-10deg); }
+        
+        nav {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 1rem 20px;
+        }
+        
+        .logo {
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 1.8rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo span {
+            color: var(--berry);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 2.5rem;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+            padding: 0.5rem 0;
+            font-size: 1.1rem;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background-color: var(--berry);
+            transition: width 0.3s;
+        }
+        
+        .nav-links a:hover:after {
+            width: 100%;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 0 20px;
+        }
+        
+        section {
+            margin-bottom: 5rem;
+        }
+        
+        h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 2rem;
+            position: relative;
+            display: inline-block;
+            text-align: center;
+            width: 100%;
+        }
+        
+        h2:after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 5px;
+            background-color: var(--accent);
+            border-radius: 3px;
+        }
+        
+        p {
+            margin-bottom: 1.8rem;
+            font-size: 1.2rem;
+            line-height: 1.8;
+        }
+        
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            margin-top: 3rem;
+        }
+        
+        .about-image {
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+            position: relative;
+            height: 400px;
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .about-image:hover img {
+            transform: scale(1.05);
+        }
+        
+        .products {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+        
+        .product-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+        
+        .product-image {
+            height: 250px;
+            overflow: hidden;
+        }
+        
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .product-card:hover .product-image img {
+            transform: scale(1.1);
+        }
+        
+        .product-content {
+            padding: 2rem;
+        }
+        
+        .product-title {
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+            text-align: center;
+        }
+        
+        .product-price {
+            font-weight: bold;
+            color: var(--berry);
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        
+        .product-description {
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        footer {
+            background: linear-gradient(135deg, var(--primary), var(--dark));
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .footer-info {
+            margin: 1.5rem 0;
+            line-height: 1.8;
+            font-size: 1.1rem;
+        }
+        
+        .footer-info p {
+            margin-bottom: 1rem;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            margin: 2rem 0;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            margin: 0 0.8rem;
+            transition: all 0.3s;
+            color: white;
+            text-decoration: none;
+            font-size: 1.5rem;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--accent);
+            transform: translateY(-5px);
+        }
+        
+        .copyright {
+            opacity: 0.8;
+            font-size: 1rem;
+            margin-top: 2rem;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        @media (max-width: 768px) {
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .nav-container {
+                flex-direction: column;
+            }
+            
+            .nav-links {
+                margin-top: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .nav-links li {
+                margin: 0.5rem 1rem;
+            }
+            
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            .tagline {
+                font-size: 1.2rem;
+            }
+            
+            .products {
+                grid-template-columns: 1fr;
+            }
+            
+            .header-content {
+                padding: 1rem;
+            }
+        }
+        
+        /* Стилі для іконки бота */
+        .fa-bot:before {
+            content: "🤖";
+            font-style: normal;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="berry-decoration berry1"></div>
+        <div class="berry-decoration berry2"></div>
+        <div class="header-content">
+            <h1>Family Blueberry</h1>
+            <p class="tagline">Вирощуємо та продаємо лохину з 2015 року</p>
+        </div>
+    </header>
+    
+    <nav>
+        <div class="nav-container">
+            <ul class="nav-links">
+                <li><a href="#about">Про нас</a></li>
+                <li><a href="#products">Наша продукція</a></li>
+                <li><a href="#contacts">Контакти</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <div class="container">
+        <section id="about">
+            <h2>Про нас</h2>
+            <div class="about-grid">
+                <div>
+                    <p>Ми - сімейна ферма, яка з 2015 року вирощує смачну та корисну лохину. Наші ягоди - це результат щоденної праці, турботи та дотримання екологічних стандартів вирощування.</p>
+                    <p>Наша ферма розташована в екологічно чистому регіоні Житомирської області, де лохина отримує все необхідне для свого насиченого смаку та аромату.</p>
+                    <p>Ми використовуємо тільки натуральні методи вирощування, без жорстких хімічних добавок та прискорювачів росту. Кожна ягода проходить ретельний контроль якості перед тим, як потрапити до вас.</p>
+                    <p>Замовляйте у нас лохину по вигідній ціні! Ми завжди раді вам!😊</p>
+                </div>
+                <div class="about-image">
+                    <img src="https://ua.s.bekhost.com/uploads/content/primhliva-lohina_1.jpg" alt="Наша ферма з лохиною">
+                </div>
+            </div>
+        </section>
+        
+        <section id="products">
+            <h2>Наша продукція</h2>
+            <div class="products">
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1425934398893-310a009a77f9?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80" alt="Свіжа лохина">
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title">Свіжа лохина</h3>
+                        <p class="product-description">Зібрана вручну лохина з нашого екологічно чистого саду. Ідеальна для десертів, випічки або просто як корисний перекус.</p>
+                        <p class="product-price">150 грн/кг</p>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80" alt="Варення з лохини">
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title">Варення з лохини</h3>
+                        <p class="product-description">Домашнє варення за сімейним рецептом. Готується тільки з відібраних ягід з мінімальною кількістю цукру. Ідеальне для сніданків та випічки.</p>
+                        <p class="product-price">200 грн/кг</p>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://gordonua.com/img/article/2785/95_main-v1532435167.jpg" alt="Ящик лохини">
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title">Ящик лохини</h3>
+                        <p class="product-description">Оптова партія свіжої лохини у зручній транспортній упаковці. Ідеальний варіант для закупівель у великій кількості.</p>
+                        <p class="product-price">700 грн/ящик (5 кг)</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    
+    <footer id="contacts">
+        <div class="footer-content">
+            <h3>Для замовлення звертайтесь до наших соц. мереж</h3>
+            <div class="footer-info">
+                <p>© Family Blueberry<br>
+                Вирощуємо та продаємо лохину з 2015 року</p>
+                <p>📍 Житомирська область, м. Баранівка<br>
+                🚚 Доставка до м. Житомир<br>
+                🏡 Самовивіз із господарства можливий щодня</p>
+                <p>Телефон: +38 (096) 716‑57‑19<br>
+            </div>
+            
+            <div class="social-links">
+                <a href="https://t.me/familyblueberry" aria-label="Telegram канал"><i class="fab fa-telegram"></i></a>
+                <a href="https://t.me/familyblueberry_bot" aria-label="Telegram бот"><i class="fas fa-robot"></i></a>
+            </div>
+            
+            <p class="copyright">Розроблено з турботою про ягоду 🍇</p>
+        </div>
+    </footer>
+</body>
+</html>
